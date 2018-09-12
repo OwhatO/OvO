@@ -1,4 +1,4 @@
-import Model, { ArrayModel, } from 'https://oxo.fenzland.com/OmO/0.1/Model.js';
+import IModel from 'https://oxo.fenzland.com/OmO/0.1/IModel.js';
 
 const CONTENT= Symbol( 'CONTENT', );
 const DOM= Symbol( 'DOM', );
@@ -7,7 +7,7 @@ export default class TextNode
 {
 	constructor( content )
 	{
-		if( content instanceof Model )
+		if( content instanceof IModel )
 		{
 			content.observedBy( content=> this.updateContent( content, ), );
 			

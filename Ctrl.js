@@ -1,4 +1,5 @@
-import Model, { ArrayModel, } from 'https://oxo.fenzland.com/OmO/0.1/Model.js';
+import Model from 'https://oxo.fenzland.com/OmO/0.1/Model.js';
+import { IArrayModel, } from 'https://oxo.fenzland.com/OmO/0.1/IModel.js';
 import VDOM from './VDOM.js';
 import TextNode from './TextNode.js';
 
@@ -165,7 +166,7 @@ class ForEachCtrl extends Ctrl
 	{
 		super();
 		
-		if(!( model instanceof ArrayModel ))
+		if(!( model instanceof IArrayModel ))
 			throw 'The model for ForEach must be an ArrayModel.';
 		
 		if(!( 'function' === typeof template ))

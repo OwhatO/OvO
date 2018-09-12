@@ -1,4 +1,4 @@
-import Model, { ArrayModel, } from 'https://oxo.fenzland.com/OmO/0.1/Model.js';
+import IModel, { IArrayModel, } from 'https://oxo.fenzland.com/OmO/0.1/IModel.js';
 import TextNode from './TextNode.js';
 import Listener from './Listener.js';
 import ITemplate from './ITemplate.js';
@@ -61,7 +61,7 @@ export default class VDOM
 	
 	setClass( value, )
 	{
-		if( value instanceof ArrayModel )
+		if( value instanceof IArrayModel )
 		{
 			const className= value.valueOf().join( ' ', );
 			
@@ -84,7 +84,7 @@ export default class VDOM
 			}, )
 		}
 		else
-		if( value instanceof Model )
+		if( value instanceof IModel )
 		{
 			this[ATTRIBUTES].set( 'class', value.valueOf(), );
 			
@@ -117,7 +117,7 @@ export default class VDOM
 			
 			for( let k in value )
 			{
-				if( value[k] instanceof Model )
+				if( value[k] instanceof IModel )
 					value[k].observedBy( v=> {
 						if( this[DOM] )
 							this[DOM].style.setProperty( k, v, );
@@ -125,7 +125,7 @@ export default class VDOM
 			}
 		}
 		else
-		if( value instanceof Model && value.IS_OBJECT )
+		if( value instanceof IModel && value.IS_OBJECT )
 			;
 		else
 			this[SET_ATTRIBUTE]( 'style', value, );
@@ -133,7 +133,7 @@ export default class VDOM
 	
 	setAttribute( attr, value=true, )
 	{
-		if( value instanceof Model )
+		if( value instanceof IModel )
 		{
 			this[SET_ATTRIBUTE]( attr, value.valueOf(), );
 			value.observedBy( v=> this[SET_ATTRIBUTE]( attr, v, ), );
@@ -293,7 +293,7 @@ export default class VDOM
 				table.children.push( new TextNode( arg, ), );
 			else
 			// Model: treat as a String
-			if( arg instanceof Model )
+			if( arg instanceof IModel )
 				table.children.push( new TextNode( arg, ), );
 			else
 			// other: convert to a String
